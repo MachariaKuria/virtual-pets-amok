@@ -1,5 +1,5 @@
 
-public class RoboticDog {
+public class RoboticDog extends VirtualPet {
 	private String petName;
 	private String petDescription;
 	private int rustLevel;

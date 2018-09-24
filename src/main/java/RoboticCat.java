@@ -1,5 +1,5 @@
 
-public class RoboticCat {
+public class RoboticCat extends VirtualPet{
 
 	private String petName;
 	private String petDescription;

@@ -4,7 +4,7 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
-public class OrganicPetTest {
+public class OrganicCatTest {
 
 	PetShelter underTest;
 	OrganicPet cat1;
@@ -36,7 +36,7 @@ public class OrganicPetTest {
 	@Test
 	public void shouldBeAbleToAddAPet() {
 		underTest.add(cat1);
-		OrganicCat allowPetIntake = underTest.findCat("Panther");
+		OrganicPet allowPetIntake = underTest.findPet("Panther");
 		assertThat(allowPetIntake, is(cat1));
 	}
 
@@ -54,20 +54,20 @@ public class OrganicPetTest {
 		underTest.add(cat1);
 		underTest.add(cat2);
 		underTest.waterAllLivePets();
-		assertThat(cat1.getThirstLevel(),is(14));
-		assertThat(cat2.getThirstLevel(),is(54));
+		assertThat(cat1.getThirstLevel(),is(13));
+		assertThat(cat2.getThirstLevel(),is(53));
 	}	
 	@Test
 	public void shouldBeAbleToPlayWithAPet() {
 		
 		underTest.add(cat2);
-		underTest.playWithCat(cat2.getPetName(),5);
+		underTest.playWithPet(cat2.getPetName(),5);
 		assertThat(cat2.getBoredomLevel(),is(65));
 	}
 	@Test
 	public void shouldBeAbleToReduceBoredFrom30To28ByPlayingWithCat1(){
 		underTest.add(cat1);
-		underTest.playWithCat(cat1.getPetName(),2);
+		underTest.playWithPet(cat1.getPetName(),2);
 		assertThat(cat1.getBoredomLevel(),is(28));
 		
 	}
@@ -75,11 +75,11 @@ public class OrganicPetTest {
 	@Test
 	public void shouldBeAbleToIncreaseWellnessLevelFrom80To92ByCleaninLitter(){
 		underTest.add(cat2);
-		underTest.cleanLitter();
+		underTest.emptyLitterBoxes();
 		assertThat(cat2.getWellnessLevel(),is(92));
 		
 	}
-	
+
 	@Test
 	public void shouldIncreaseHungerThirstBoredomShouldGoUpWithOneTick() {
 		underTest.tick();

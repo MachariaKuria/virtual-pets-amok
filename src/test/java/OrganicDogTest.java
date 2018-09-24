@@ -65,13 +65,13 @@ public class OrganicDogTest {
 //		assertThat(dog2.getBoredomLevel(),is(67));
 //	}
 	
-	@Test
-	public void shouldBeAbleToIncreaseWellnessLevelFrom80To92ByCleaninCages(){
-		underTest.add(dog2);
-		underTest.cleanAllCages();
-		assertThat(dog2.getWellnessLevel(),is(90));
-		
-	}
+//	@Test
+//	public void shouldBeAbleToIncreaseWellnessLevelFrom80To92ByCleaninCages(){
+//		underTest.add(dog2);
+//		underTest.cleanAllCages();
+//		assertThat(dog2.getWellnessLevel(),is(90));
+//		
+//	}
 	
 	@Test
 	public void shouldIncreaseHungerThirstBoredomShouldGoUpWithOneTick() {

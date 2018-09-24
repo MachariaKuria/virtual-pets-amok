@@ -1,24 +1,9 @@
 
-public class OrganicPet {
+public class OrganicPet extends VirtualPet {
 
-	protected String petName;
-	protected String petDescription;
 	protected int hungerLevel;
 	protected int thirstLevel;
 	protected int boredomLevel;
-	protected int wellnessLevel;
-
-
-	public String getPetName() {
-		
-		return petName;
-	}
-
-	public String getPetDescription() {
-		
-		return petDescription;
-	}
-
 	public int getHungerLevel() {
 	
 		return hungerLevel;
@@ -34,16 +19,6 @@ public class OrganicPet {
 		return boredomLevel;
 	}
 
-	public int getWellnessLevel() {
-		
-		return wellnessLevel;
-	}
-
-	public void petPlay(int play) {
-		boredomLevel -= play;
-		
-	}
-
 	public void increaseHunger() {
 		hungerLevel +=22;
 		
@@ -54,16 +29,27 @@ public class OrganicPet {
 		
 	}
 
-	public void increaseBoredom() {
-		boredomLevel +=14;
-		
-	}
-
 	public void increaseWasteLevel() {
 		
 		hungerLevel += 10;
 		
 	}
+
+	public void feedPets() {
+		hungerLevel -= 7;
+		
+	}
+
+	public void waterPets() {
+		thirstLevel -=7;
+		
+	}
+
+	public void petPlay(int play) {
+		boredomLevel -= play;
+		
+	}
+
 
 
 }
