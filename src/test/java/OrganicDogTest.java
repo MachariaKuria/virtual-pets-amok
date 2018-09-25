@@ -1,8 +1,7 @@
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.Assert.assertThat;
-
-import java.util.Collection;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -46,6 +45,12 @@ public class OrganicDogTest {
 	}
 
 	@Test
+	public void shouldBeAbleToReturnNullOnAddingARoboticPet() {
+		underTest.add(dog1);
+		VirtualPet allowPetIntake = underTest.findPet("Panther");
+		assertThat(allowPetIntake, is(nullValue()));
+	}	
+	@Test
 	public void shouldBeAbleToFeedAllDogs(){
 		underTest.add(dog1);
 		underTest.add(dog2);
@@ -55,10 +60,11 @@ public class OrganicDogTest {
 	}
 
 	@Test
-	public void shouldBeAbleToWaterAllDogs(){
+	public void shouldBeAbleToWaterAllOrganicPets(){
 		underTest.add(dog1);
 		underTest.add(dog2);
-		underTest.waterAllLivePets();
+		((OrganicPet)dog1).waterPets();
+		((OrganicPet)dog2).waterPets();
 		assertThat(dog1.getThirstLevel(),is(13));
 		assertThat(dog2.getThirstLevel(),is(53));
 	}	
@@ -70,15 +76,15 @@ public class OrganicDogTest {
 		assertThat(dog2.getHappinessLevel(),is(85));
 	}
 	@Test
-	public void shouldBeAbleToReduceBoredFrom30To28ByPlayingWithdog1(){
+	public void shouldBeAbleToIncreaseHappinessLevelFrom28To42ByPlayingWithdog1(){
 		underTest.add(dog1);
 		underTest.playWithPet(dog1.getPetName(),2);
-		assertThat(dog1.getHappinessLevel(),is(28));
+		assertThat(dog1.getHappinessLevel(),is(42));
 		
 	}
 	
 	@Test
-	public void shouldBeAbleToIncreaseWellnessLevelFrom80To92ByCleaninLitter(){
+	public void shouldBeAbleToIncreaseHealthLevelFrom80To92ByCleaningCages(){
 		underTest.add(dog2);
 		underTest.cleanAllCages();
 		assertThat(dog2.getHealthLevel(),is(92));
@@ -86,7 +92,7 @@ public class OrganicDogTest {
 	}
 
 	@Test
-	public void shouldIncreaseHungerThirstBoredomShouldGoUpWithOneTick() {
+	public void shouldIncreaseHungerThirstBoredomWhileReduceHappinessWithOneTick() {
 		underTest.tick();
 		dog1.increaseHunger();
 		dog1.increaseThirst();
@@ -94,15 +100,16 @@ public class OrganicDogTest {
 		dog1.increaseWasteLevel();
 		assertThat(dog1.getHungerLevel(),is(42));
 		assertThat(dog1.getThirstLevel(),is(43));
-		assertThat(dog1.getHappinessLevel(),is(44));
+		assertThat(dog1.getHappinessLevel(),is(1));
 	}
 	
 	@Test
 	public void shouldBeAbleToReduceBoredomLevelByWalkingAllDogs() {
 		underTest.add(dog1);
 		underTest.add(dog2);
-		underTest.walkAllDogs();
-		assertThat(dog1.getHappinessLevel(),is(20));
-		assertThat(dog2.getHappinessLevel(),is(60));
+		((IDog)dog1).walkDog();
+		((IDog)dog2).walkDog();
+		assertThat(dog1.getHappinessLevel(),is(47));
+		assertThat(dog2.getHappinessLevel(),is(87));
 	}
 }

@@ -102,13 +102,12 @@ public class PetShelter {
 
 	}
 
-	public Collection<VirtualPet> walkAllDogs() {
+	public void walkAllDogs() {
 		for (VirtualPet pet : pets.values()) {
 			if (pet instanceof IDog) {
 				((IDog) pet).walkDog();
 			}
 		}
-		return pets.values();
 	}
 
 

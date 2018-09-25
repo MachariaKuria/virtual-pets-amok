@@ -37,7 +37,7 @@ public class OrganicCatTest {
 	}
 	
 	@Test
-	public void shouldBeAbleToReturnNullOnAddingAnRoboticPet() {
+	public void shouldBeAbleToReturnNullOnAddingARoboticPet() {
 		underTest.add(cat1);
 		VirtualPet allowPetIntake = underTest.findPet("Tommy");
 		assertThat(allowPetIntake, is(nullValue()));
@@ -75,10 +75,10 @@ public class OrganicCatTest {
 	}
 	
 	@Test
-	public void shouldBeAbleToIncreaseHapinessLevelFrom80To92ByCleaninLitter(){
+	public void shouldBeAbleToIncreaseHapinessLevelFrom70To89ByCleaninLitter(){
 		underTest.add(cat2);
-		underTest.emptyLitterBoxes();
-		assertThat(cat2.getHealthLevel(),is(92));
+		((OrganicCat)cat2).cleanLitterBoxes();
+		assertThat(cat2.getHappinessLevel(),is(89));
 		
 	}
 

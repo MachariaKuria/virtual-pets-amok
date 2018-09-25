@@ -18,7 +18,7 @@ public class OrganicDog extends OrganicPet implements IDog{
 
 
 	public void walkDog() {
-		happinessLevel += 10;
+		happinessLevel += 17;
 	    
 		
 	}
