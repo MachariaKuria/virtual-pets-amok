@@ -37,7 +37,7 @@ public class OrganicDogTest {
 	@Test
 	public void shouldBeAbleToAddAPet() {
 		underTest.add(dog1);
-		OrganicPet allowPetIntake = underTest.findPet("Tommy");
+		VirtualPet allowPetIntake = underTest.findPet("Tommy");
 		assertThat(allowPetIntake, is(dog1));
 	}
 

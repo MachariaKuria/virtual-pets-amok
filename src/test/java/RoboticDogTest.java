@@ -1,5 +1,7 @@
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.Assert.assertThat;
 
 import java.util.Collection;
@@ -7,17 +9,21 @@ import java.util.Collection;
 import org.junit.Before;
 import org.junit.Test;
 
+import petshelter.VirtualPet;
+
 public class RoboticDogTest {
 	
 	PetShelter underTest;
-	RoboticDog dog1;
-	RoboticDog dog2;
-
+	RoboticPet dog1;
+	RoboticPet dog2;
+	
 	@Before
-	public void setUp() {
+	public void shouldBeAnInstanceofRoboticDog() {
 		underTest = new PetShelter();
-		dog1 = new RoboticDog("Robo","White",102,202);
-		dog2 = new RoboticDog("Teko", "Blue with neon lights",708, 801);
+		 dog1 = new RoboticDog("RoboTommy", "Neon lights", 102,103);
+		 dog2 = new RoboticDog("RoboShepard", "Green lights", 110,130);
+		assertThat(dog1, instanceOf(RoboticDog.class));
+		assertThat(dog2, instanceOf(RoboticDog.class));
 	}
 	
 	@Test
@@ -26,28 +32,27 @@ public class RoboticDogTest {
 		String description = dog1.getPetDescription();
 		int wellnessLevel = dog1.getWellnessLevel();
 		int rustLevel = dog1.getRustLevel();
-		assertThat(name ,is("Robo"));
-		assertThat(description ,is("White"));
+		assertThat(name ,is("RoboTommy"));
+		assertThat(description ,is("Neon lights"));
 		assertThat(rustLevel ,is(102));
-		assertThat(wellnessLevel ,is(202));
+		assertThat(wellnessLevel ,is(103));
 	}
 	
 	@Test
-	public void shouldBeAbleToAddAPet() {
+	public void shouldBeAbleToAdoptAPet() {
 		underTest.adopt(dog1);
-		underTest.adopt(dog2);
-		Collection<PetShelter> roboticPets = underTest.getAllRoboticPets();
-		assertThat(roboticPets, containsInAnyOrder(dog1, dog2));
+		VirtualPet allowPetAdoption = underTest.findPet(dog1.getPetName());
+		assertThat(allowPetAdoption, is(nullValue()));
 	}
-	
+
 	@Test
-	public void shouldBeAbleToReduceRustByOilingCats() {
+	public void shouldBeAbleToDecreaseRustLevelBy7AfterOilingPets() {
 		
 		underTest.add(dog1);
 		underTest.add(dog2);
 		underTest.oilAllPets();
-		assertThat(dog1.getRustLevel(),is(102));
-		assertThat(dog2.getRustLevel(),is(696));
+		assertThat(dog1.getRustLevel(),is(90));
+		assertThat(dog2.getRustLevel(),is(98));
 		
 	}
 

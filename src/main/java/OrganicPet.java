@@ -46,10 +46,6 @@ public abstract class OrganicPet extends VirtualPet {
 		
 	}
 
-	public void petPlay(int play) {
-		boredomLevel -= play;
-		
-	}
 	@Override
 	public void increaseBoredom() {
 		this.boredomLevel +=14;

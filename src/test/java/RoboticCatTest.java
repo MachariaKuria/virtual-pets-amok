@@ -1,4 +1,6 @@
+
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
@@ -7,14 +9,16 @@ import org.junit.Test;
 public class RoboticCatTest {
 	
 	PetShelter underTest;
-	RoboticCat cat1;
-	RoboticCat cat2;
+	RoboticPet cat1;
+	RoboticPet cat2;
 
 	@Before
-	public void setUp() {
+	public void shouldBeAnInstanceofRoboticCat() {
 		underTest = new PetShelter();
 		cat1 = new RoboticCat("Robo","White",102,202);
 		cat2 = new RoboticCat("Teko", "Blue with neon lights",708, 801);
+		assertThat(cat1, instanceOf(RoboticCat.class));
+		assertThat(cat2, instanceOf(RoboticCat.class));
 	}
 	
 	@Test
