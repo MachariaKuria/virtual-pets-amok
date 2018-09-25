@@ -54,7 +54,8 @@ public abstract class OrganicPet extends VirtualPet {
 	@Override
 	public void increaseBoredom() {
 		boredomLevel += 14;
-
+		happinessLevel -= 29;
 	}
+
 
 }

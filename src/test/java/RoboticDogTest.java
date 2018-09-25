@@ -20,8 +20,8 @@ public class RoboticDogTest {
 	@Before
 	public void shouldBeAnInstanceofRoboticDog() {
 		underTest = new PetShelter();
-		 dog1 = new RoboticDog("RoboTommy", "Neon lights", 102,103);
-		 dog2 = new RoboticDog("RoboShepard", "Green lights", 110,130);
+		 dog1 = new RoboticDog("RoboTommy", "Neon lights", 102,103,100);
+		 dog2 = new RoboticDog("RoboShepard", "Green lights", 110,130,150);
 		assertThat(dog1, instanceOf(RoboticDog.class));
 		assertThat(dog2, instanceOf(RoboticDog.class));
 	}
@@ -61,7 +61,7 @@ public class RoboticDogTest {
 		underTest.add(dog1);
 		underTest.add(dog2);
 		underTest.walkAllDogs();
-		assertThat(dog1.getHappinessLevel(),is(118));
-		assertThat(dog2.getHappinessLevel(),is(145));
+		assertThat(dog1.getHappinessLevel(),is(115));
+		assertThat(dog2.getHappinessLevel(),is(165));
 	}
 }

@@ -11,10 +11,9 @@ public class OrganicCat extends OrganicPet {
 		this.happinessLevel = happinessLevel;
 	}
 
-
 	public void cleanLitterBoxes() {
-		happinessLevel +=12;
-		wasteLevel -=11;
+		wasteLevel -=21;
+		happinessLevel +=19;
 	}
 
 }

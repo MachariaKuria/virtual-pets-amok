@@ -14,7 +14,7 @@ public class OrganicDogTest {
 
 
 	@Before
-	public void shouldBeAnInstanceofRoboticDog() {
+	public void shouldBeAnInstanceofOrganicDog() {
 		underTest = new PetShelter();
 		 dog1 = new OrganicDog("Tommy","Brown",10,20,30,40);
 		 dog2 = new OrganicDog("Filo", "Has grey spots", 50, 60,70, 80);
@@ -67,7 +67,7 @@ public class OrganicDogTest {
 		
 		underTest.add(dog2);
 		underTest.playWithPet(dog2.getPetName(),5);
-		assertThat(dog2.getHappinessLevel(),is(65));
+		assertThat(dog2.getHappinessLevel(),is(85));
 	}
 	@Test
 	public void shouldBeAbleToReduceBoredFrom30To28ByPlayingWithdog1(){

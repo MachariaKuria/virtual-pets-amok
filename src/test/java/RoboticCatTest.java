@@ -16,8 +16,8 @@ public class RoboticCatTest {
 	@Before
 	public void shouldBeAnInstanceofRoboticCat() {
 		underTest = new PetShelter();
-		cat1 = new RoboticCat("Robo","White",102,202);
-		cat2 = new RoboticCat("Teko", "Blue with neon lights",708, 801);
+		cat1 = new RoboticCat("Robo","White",102,202,120);
+		cat2 = new RoboticCat("Teko", "Blue with neon lights",708, 801,130);
 		assertThat(cat1, instanceOf(RoboticCat.class));
 		assertThat(cat2, instanceOf(RoboticCat.class));
 	}
@@ -50,4 +50,5 @@ public class RoboticCatTest {
 		VirtualPet allowPetIntake = underTest.findPet("Panther");
 		assertThat(allowPetIntake, is(nullValue()));
 	}
+	
 }

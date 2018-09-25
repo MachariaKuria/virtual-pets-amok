@@ -1,5 +1,6 @@
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
@@ -12,12 +13,13 @@ public class OrganicCatTest {
 	OrganicPet cat2;
 
 	@Before
-	public void setUp() {
+	public void shouldBeAnInstanceofOrganicCat() {
 		underTest = new PetShelter();
-		cat1 = new OrganicCat("Panther","Black",10,20,45,30);
-		cat2 = new OrganicCat("Chui", "Has dark spots", 50, 60,45,70);
-	}
-	
+		 cat1 = new OrganicCat("Panther","Black",10,20,45,30);
+		 cat2 = new OrganicCat("Chui", "Has dark spots", 50, 60,45,70);
+		assertThat(cat1, instanceOf(OrganicPet.class));
+		assertThat(cat2, instanceOf(OrganicPet.class));
+	}	
 	@Test
 	public void shouldRenderProperties() {
 		String name = cat1.getPetName();
@@ -75,7 +77,7 @@ public class OrganicCatTest {
 	@Test
 	public void shouldBeAbleToIncreaseHapinessLevelFrom80To92ByCleaninLitter(){
 		underTest.add(cat2);
-		((OrganicCat)cat2).cleanLitterBoxes();
+		underTest.emptyLitterBoxes();
 		assertThat(cat2.getHealthLevel(),is(92));
 		
 	}
