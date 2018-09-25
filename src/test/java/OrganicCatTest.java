@@ -1,4 +1,5 @@
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
@@ -33,6 +34,12 @@ public class OrganicCatTest {
 		assertThat(healthLevel ,is(70));
 	}
 	
+	@Test
+	public void shouldBeAbleToReturnNullOnAddingAnRoboticPet() {
+		underTest.add(cat1);
+		VirtualPet allowPetIntake = underTest.findPet("Tommy");
+		assertThat(allowPetIntake, is(nullValue()));
+	}	
 	@Test
 	public void shouldBeAbleToAddAPet() {
 		underTest.add(cat1);

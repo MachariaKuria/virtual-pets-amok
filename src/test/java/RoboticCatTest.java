@@ -1,5 +1,6 @@
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.Assert.assertThat;
 
@@ -44,9 +45,9 @@ public class RoboticCatTest {
 		
 	}
 	@Test
-	public void shouldNotBeAbleToAddAnOrganicPet() {
+	public void shouldBeAbleToReturnNullOnAddingAnOrganicPet() {
 		underTest.add(cat1);
 		VirtualPet allowPetIntake = underTest.findPet("Panther");
-		assertThat(allowPetIntake, is(cat1));
+		assertThat(allowPetIntake, is(nullValue()));
 	}
 }
