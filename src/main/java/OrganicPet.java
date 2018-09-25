@@ -1,9 +1,10 @@
 
-public class OrganicPet extends VirtualPet {
+public abstract class OrganicPet extends VirtualPet {
 
 	protected int hungerLevel;
 	protected int thirstLevel;
 	protected int boredomLevel;
+	
 	public int getHungerLevel() {
 	
 		return hungerLevel;
@@ -49,7 +50,10 @@ public class OrganicPet extends VirtualPet {
 		boredomLevel -= play;
 		
 	}
-
-
+	@Override
+	public void increaseBoredom() {
+		this.boredomLevel +=14;
+		
+	}
 
 }

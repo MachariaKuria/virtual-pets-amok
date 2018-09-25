@@ -41,38 +41,46 @@ public class OrganicDogTest {
 		assertThat(allowPetIntake, is(dog1));
 	}
 
-//	@Test
-//	public void shouldBeAbleToFeedAllDogs(){
-//		underTest.add(dog1);
-//		underTest.add(dog2);
-//		Collection<OrganicPet> livePets = underTest.FeedAllLivePets();
-//
-//	}
+	@Test
+	public void shouldBeAbleToFeedAllDogs(){
+		underTest.add(dog1);
+		underTest.add(dog2);
+		underTest.FeedAllLivePets();
+		assertThat(dog1.getHungerLevel(),is(3));
+		assertThat(dog2.getHungerLevel(),is(43));
+	}
 
-//	@Test
-//	public void shouldBeAbleToWaterAllDogs(){
-//		underTest.add(dog1);
-//		underTest.add(dog2);
-//		underTest.waterAllLivePets();
-//		assertThat(dog1.getThirstLevel(),is(10));
-//		assertThat(dog2.getThirstLevel(),is(50));
-//	}	
-//	@Test
-//	public void shouldBeAbleToPlayWithAPet() {
-//		
-//		underTest.add(dog2);
-//		underTest.playWithPet(dog2.getPetName(),5);
-//		assertThat(dog2.getBoredomLevel(),is(67));
-//	}
+	@Test
+	public void shouldBeAbleToWaterAllDogs(){
+		underTest.add(dog1);
+		underTest.add(dog2);
+		underTest.waterAllLivePets();
+		assertThat(dog1.getThirstLevel(),is(13));
+		assertThat(dog2.getThirstLevel(),is(53));
+	}	
+	@Test
+	public void shouldBeAbleToPlayWithAPet() {
+		
+		underTest.add(dog2);
+		underTest.playWithPet(dog2.getPetName(),5);
+		assertThat(dog2.getBoredomLevel(),is(65));
+	}
+	@Test
+	public void shouldBeAbleToReduceBoredFrom30To28ByPlayingWithdog1(){
+		underTest.add(dog1);
+		underTest.playWithPet(dog1.getPetName(),2);
+		assertThat(dog1.getBoredomLevel(),is(28));
+		
+	}
 	
-//	@Test
-//	public void shouldBeAbleToIncreaseWellnessLevelFrom80To92ByCleaninCages(){
-//		underTest.add(dog2);
-//		underTest.cleanAllCages();
-//		assertThat(dog2.getWellnessLevel(),is(90));
-//		
-//	}
-	
+	@Test
+	public void shouldBeAbleToIncreaseWellnessLevelFrom80To92ByCleaninLitter(){
+		underTest.add(dog2);
+		underTest.cleanAllCages();
+		assertThat(dog2.getWellnessLevel(),is(92));
+		
+	}
+
 	@Test
 	public void shouldIncreaseHungerThirstBoredomShouldGoUpWithOneTick() {
 		underTest.tick();
@@ -80,9 +88,17 @@ public class OrganicDogTest {
 		dog1.increaseThirst();
 		dog1.increaseBoredom();
 		dog1.increaseWasteLevel();
-		assertThat(dog1.getHungerLevel(),is(32));
+		assertThat(dog1.getHungerLevel(),is(42));
 		assertThat(dog1.getThirstLevel(),is(43));
 		assertThat(dog1.getBoredomLevel(),is(44));
-		assertThat(dog1.getWellnessLevel(),is(30));
+	}
+	
+	@Test
+	public void shouldBeAbleToReduceBoredomLevelByWalkingAllDogs() {
+		underTest.add(dog1);
+		underTest.add(dog2);
+		((OrganicDog) dog1).walkDog();
+		assertThat(dog1.getBoredomLevel(),is(20));
+		assertThat(dog2.getBoredomLevel(),is(70));
 	}
 }

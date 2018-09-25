@@ -5,10 +5,6 @@ public class PetShelter {
 
 	Map<String, OrganicPet> livePets = new HashMap<>();
 
-	public void adopt(OrganicPet cat) {
-		livePets.put(cat.getPetName(), cat);
-
-	}
 
 	public OrganicPet findPet(String petName) {
 
@@ -31,8 +27,8 @@ public class PetShelter {
 
 	}
 
-	public void add(OrganicPet dog) {
-		livePets.put(dog.getPetName(), dog);
+	public void add(OrganicPet pet) {
+		livePets.put(pet.getPetName(), pet);
 
 	}
 
@@ -63,6 +59,15 @@ public class PetShelter {
 		
 		VirtualPet petToPlayWith = findPet(petName);
 		petToPlayWith.petPlay(play);
+	}
+
+	public void cleanAllCages() {
+		for (OrganicPet livePet : livePets.values()) {
+			if (livePet instanceof OrganicDog) {
+				((OrganicDog) livePet).emptyCages();
+			}
+		}		
+		
 	}
 
 }

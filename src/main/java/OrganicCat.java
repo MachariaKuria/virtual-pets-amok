@@ -10,18 +10,6 @@ public class OrganicCat extends OrganicPet {
 		this.wellnessLevel = wellnessLevel;
 	}
 
-	
-
-	public void feedCats() {
-		hungerLevel -= 7;
-		
-	}
-
-	public void waterCats() {
-		thirstLevel -=6;
-		
-	}
-
 
 	public void cleanLitterBoxes() {
 		wellnessLevel +=12;

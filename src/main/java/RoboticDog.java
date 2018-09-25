@@ -1,5 +1,5 @@
 
-public class RoboticDog extends VirtualPet {
+public class RoboticDog extends VirtualPet implements IDog {
 	private String petName;
 	private String petDescription;
 	private int rustLevel;
@@ -32,6 +32,12 @@ public class RoboticDog extends VirtualPet {
 
 	public void oilDogs() {
 		rustLevel -= 12;
+		
+	}
+
+	@Override
+	public void walkDog() {
+		boredomLevel -= 15;
 		
 	}
 }

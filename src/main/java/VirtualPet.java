@@ -11,7 +11,6 @@ public abstract class VirtualPet {
 		
 		return petName;
 	}
-
 	public String getPetDescription() {
 		
 		return petDescription;
@@ -32,4 +31,5 @@ public abstract class VirtualPet {
 		
 	}
 
+	
 }

@@ -1,5 +1,5 @@
 
-public class OrganicDog extends OrganicPet {
+public class OrganicDog extends OrganicPet implements IDog{
 
 	public OrganicDog(String petName, String petDescription, int hungerLevel, int thirstLevel, int boredomLevel,
 			int wellnessLevel) {
@@ -11,47 +11,16 @@ public class OrganicDog extends OrganicPet {
 		this.wellnessLevel = wellnessLevel;
 	}
 
-	public void feedDogs() {
-		hungerLevel -= 1;
 
+	public void emptyCages() {
+		wellnessLevel += 12;
 	}
 
-	public void waterDogs() {
-		thirstLevel -= 10;
 
-	}
-
-	@Override
-	public void increaseHunger() {
-		hungerLevel += 22;
-
-	}
-
-	@Override
-	public void increaseThirst() {
-		thirstLevel += 23;
-
-	}
-
-	@Override
-	public void increaseBoredom() {
-		boredomLevel += 14;
-
-	}
-
-	@Override
-	public void increaseWasteLevel() {
-		wellnessLevel -= 10;
-
-	}
-
-	public void CleanAllCages() {
-		wellnessLevel += 10;
-	}
-
-	public void petPlay(int play) {
-		boredomLevel -= 3;
-
+	public void walkDog() {
+		boredomLevel -= 10;
+	    
+		
 	}
 
 }
