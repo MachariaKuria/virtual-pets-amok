@@ -1,15 +1,11 @@
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
-import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.Assert.assertThat;
-
-import java.util.Collection;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import petshelter.VirtualPet;
 
 public class RoboticDogTest {
 
