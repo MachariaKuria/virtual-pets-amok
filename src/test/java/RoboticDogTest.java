@@ -66,7 +66,8 @@ public class RoboticDogTest {
 	public void shouldBeAbleToIncreaseHappinessLevelByWalkingAllDogs() {
 		underTest.add(dog1);
 		underTest.add(dog2);
-		underTest.walkAllDogs();
+		((IDog)dog1).walkDog();
+		((IDog)dog2).walkDog();
 		assertThat(dog1.getHappinessLevel(), is(115));
 		assertThat(dog2.getHappinessLevel(), is(165));
 	}
