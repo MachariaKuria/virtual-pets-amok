@@ -1,16 +1,17 @@
 
 public class RoboticDog extends RoboticPet implements IDog {
 
-	public RoboticDog(String petName, String petDescription, int rustLevel, int wellnessLevel) {
+	public RoboticDog(String petName, String petDescription, int rustLevel, int healthLevel) {
 		this.petName = petName;
 		this.petDescription = petDescription;
 		this.rustLevel = rustLevel;
-		this.wellnessLevel = wellnessLevel;
+		this.healthLevel = healthLevel;
 	}
 
 	@Override
 	public void walkDog() {
-		boredomLevel -= 15;
-		
+		happinessLevel += 15;
+		healthLevel += 15;
+
 	}
 }

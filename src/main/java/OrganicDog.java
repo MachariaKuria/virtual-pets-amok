@@ -1,24 +1,24 @@
 
 public class OrganicDog extends OrganicPet implements IDog{
 
-	public OrganicDog(String petName, String petDescription, int hungerLevel, int thirstLevel, int boredomLevel,
-			int wellnessLevel) {
+	public OrganicDog(String petName, String petDescription, int hungerLevel, int thirstLevel, int happinessLevel,
+			int healthLevel) {
 		this.petName = petName;
 		this.petDescription = petDescription;
 		this.hungerLevel = hungerLevel;
 		this.thirstLevel = thirstLevel;
-		this.boredomLevel = boredomLevel;
-		this.wellnessLevel = wellnessLevel;
+		this.happinessLevel = happinessLevel;
+		this.healthLevel = healthLevel;
 	}
 
 
 	public void emptyCages() {
-		wellnessLevel += 12;
+		healthLevel += 12;
 	}
 
 
 	public void walkDog() {
-		boredomLevel -= 10;
+		happinessLevel += 10;
 	    
 		
 	}

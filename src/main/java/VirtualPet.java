@@ -3,33 +3,36 @@ public abstract class VirtualPet {
 
 	protected String petName;
 	protected String petDescription;
-	protected int wellnessLevel;
-	protected int boredomLevel;
+	protected int happinessLevel;
+	protected int healthLevel;
 
 
 	public String getPetName() {
 		
 		return petName;
 	}
+	
 	public String getPetDescription() {
 		
 		return petDescription;
 	}
+	public int getHappinessLevel() {
+		return happinessLevel;
+	}
 
-	public int getWellnessLevel() {
+	public int getHealthLevel() {
 		
-		return wellnessLevel;
+		return healthLevel;
 	}
 
 	public void petPlay(int play) {
-		boredomLevel -= play;
-		
+		happinessLevel += play;
+		happinessLevel +=10;
 	}
 
 	public void increaseBoredom() {
-		this.boredomLevel +=14;
+		happinessLevel -=14;
 		
 	}
 
-	
 }

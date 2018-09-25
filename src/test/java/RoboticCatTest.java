@@ -25,12 +25,12 @@ public class RoboticCatTest {
 	public void shouldBeAbleToRenderProperties() {
 		String name = cat1.getPetName();
 		String description = cat1.getPetDescription();
-		int wellnessLevel = cat1.getWellnessLevel();
+		int healthLevel = cat1.getHealthLevel();
 		int rustLevel = cat1.getRustLevel();
 		assertThat(name ,is("Robo"));
 		assertThat(description ,is("White"));
 		assertThat(rustLevel ,is(102));
-		assertThat(wellnessLevel ,is(202));
+		assertThat(healthLevel ,is(202));
 	}
 	
 	@Test
@@ -38,10 +38,15 @@ public class RoboticCatTest {
 		
 		underTest.add(cat1);
 		underTest.add(cat2);
-		underTest.oilRoboticPets();
+		underTest.oilAllPets();
 		assertThat(cat1.getRustLevel(),is(90));
 		assertThat(cat2.getRustLevel(),is(696));
 		
 	}
-
+	@Test
+	public void shouldNotBeAbleToAddAnOrganicPet() {
+		underTest.add(cat1);
+		VirtualPet allowPetIntake = underTest.findPet("Panther");
+		assertThat(allowPetIntake, is(cat1));
+	}
 }

@@ -30,7 +30,7 @@ public class RoboticDogTest {
 	public void shouldBeAbleToRenderProperties() {
 		String name = dog1.getPetName();
 		String description = dog1.getPetDescription();
-		int wellnessLevel = dog1.getWellnessLevel();
+		int wellnessLevel = dog1.getHealthLevel();
 		int rustLevel = dog1.getRustLevel();
 		assertThat(name ,is("RoboTommy"));
 		assertThat(description ,is("Neon lights"));
@@ -55,5 +55,13 @@ public class RoboticDogTest {
 		assertThat(dog2.getRustLevel(),is(98));
 		
 	}
-
+	
+	@Test
+	public void shouldBeAbleToIncreaseHappinessLevelByWalkingAllDogs() {
+		underTest.add(dog1);
+		underTest.add(dog2);
+		underTest.walkAllDogs();
+		assertThat(dog1.getHappinessLevel(),is(118));
+		assertThat(dog2.getHappinessLevel(),is(145));
+	}
 }

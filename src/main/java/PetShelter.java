@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,24 +12,6 @@ public class PetShelter {
 		return pets.get(petName);
 	}
 
-	public void tick() {
-		int wasteLevel = 0;
-		if ((int) (Math.random() * 10) + 1 < 5) {
-			for (VirtualPet pet : pets.values()) {
-
-				if (pet instanceof OrganicPet) {
-					((OrganicPet) pet).increaseHunger();
-					((OrganicPet) pet).increaseThirst();
-				}
-				pet.increaseBoredom();
-				if (wasteLevel >= 10) {
-
-				}
-			}
-
-		}
-
-	}
 
 	public void add(VirtualPet pet) {
 		pets.put(pet.getPetName(), pet);
@@ -63,8 +46,8 @@ public class PetShelter {
 
 	public void playWithPet(String petName, int play) {
 
-		VirtualPet petToPlayWith = findPet(petName);
-		petToPlayWith.petPlay(play);
+		VirtualPet pet = findPet(petName);
+		pet.petPlay(play);
 	}
 
 	public void cleanAllCages() {
@@ -77,13 +60,37 @@ public class PetShelter {
 	}
 
 	public void adopt(VirtualPet pet) {
-		
+
 		pets.remove(pet.getPetName(), pet);
 	}
 
 	public Collection<VirtualPet> getAllRoboticPets() {
-		
-		return pets.values();
+		Collection<VirtualPet> roboPet = new ArrayList<>();
+		for (VirtualPet pet : pets.values()) {
+			if (pet instanceof RoboticPet) {
+				roboPet.add(pet);
+			}
+		}
+		return roboPet;
+	}
+
+	public void tick() {
+		int wasteLevel = 0;
+		if ((int) (Math.random() * 10) + 1 < 5) {
+			for (VirtualPet pet : pets.values()) {
+
+				if (pet instanceof OrganicPet) {
+					((OrganicPet) pet).increaseHunger();
+					((OrganicPet) pet).increaseThirst();
+				}
+				pet.increaseBoredom();
+				if (wasteLevel >= 10) {
+					((OrganicPet) pet).increaseWasteLevel();
+				}
+			}
+
+		}
+
 	}
 
 	public void oilAllPets() {
@@ -92,7 +99,17 @@ public class PetShelter {
 				((RoboticPet) pet).oilPets();
 			}
 		}
-		
+
 	}
+
+	public Collection<VirtualPet> walkAllDogs() {
+		for (VirtualPet pet : pets.values()) {
+			if (pet instanceof IDog) {
+				((IDog) pet).walkDog();
+			}
+		}
+		return pets.values();
+	}
+
 
 }

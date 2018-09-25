@@ -1,4 +1,5 @@
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.Assert.assertThat;
 
 import java.util.Collection;
@@ -10,12 +11,15 @@ public class OrganicDogTest {
 	PetShelter underTest;
 	OrganicPet	dog1;
 	OrganicPet	dog2;
-	
+
+
 	@Before
-	public void setUp() {
+	public void shouldBeAnInstanceofRoboticDog() {
 		underTest = new PetShelter();
-		dog1 = new OrganicDog("Tommy","Brown",10,20,30,40);
-		dog2 = new OrganicDog("Filo", "Has grey spots", 50, 60,70, 80);
+		 dog1 = new OrganicDog("Tommy","Brown",10,20,30,40);
+		 dog2 = new OrganicDog("Filo", "Has grey spots", 50, 60,70, 80);
+		assertThat(dog1, instanceOf(OrganicPet.class));
+		assertThat(dog2, instanceOf(OrganicPet.class));
 	}
 	
 	@Test
@@ -24,8 +28,8 @@ public class OrganicDogTest {
 		String description = dog1.getPetDescription();
 		int hungerLevel = dog1.getHungerLevel();
 		int thirstLevel =dog1.getThirstLevel();
-		int boredomLevel = dog2.getBoredomLevel();
-		int wellnessLevel = dog1.getWellnessLevel();
+		int boredomLevel = dog2.getHappinessLevel();
+		int wellnessLevel = dog1.getHealthLevel();
 		assertThat(name ,is("Tommy"));
 		assertThat(description ,is("Brown"));
 		assertThat(hungerLevel ,is(10));
@@ -63,13 +67,13 @@ public class OrganicDogTest {
 		
 		underTest.add(dog2);
 		underTest.playWithPet(dog2.getPetName(),5);
-		assertThat(dog2.getBoredomLevel(),is(65));
+		assertThat(dog2.getHappinessLevel(),is(65));
 	}
 	@Test
 	public void shouldBeAbleToReduceBoredFrom30To28ByPlayingWithdog1(){
 		underTest.add(dog1);
 		underTest.playWithPet(dog1.getPetName(),2);
-		assertThat(dog1.getBoredomLevel(),is(28));
+		assertThat(dog1.getHappinessLevel(),is(28));
 		
 	}
 	
@@ -77,7 +81,7 @@ public class OrganicDogTest {
 	public void shouldBeAbleToIncreaseWellnessLevelFrom80To92ByCleaninLitter(){
 		underTest.add(dog2);
 		underTest.cleanAllCages();
-		assertThat(dog2.getWellnessLevel(),is(92));
+		assertThat(dog2.getHealthLevel(),is(92));
 		
 	}
 
@@ -90,15 +94,15 @@ public class OrganicDogTest {
 		dog1.increaseWasteLevel();
 		assertThat(dog1.getHungerLevel(),is(42));
 		assertThat(dog1.getThirstLevel(),is(43));
-		assertThat(dog1.getBoredomLevel(),is(44));
+		assertThat(dog1.getHappinessLevel(),is(44));
 	}
 	
 	@Test
 	public void shouldBeAbleToReduceBoredomLevelByWalkingAllDogs() {
 		underTest.add(dog1);
 		underTest.add(dog2);
-		((OrganicDog) dog1).walkDog();
-		assertThat(dog1.getBoredomLevel(),is(20));
-		assertThat(dog2.getBoredomLevel(),is(70));
+		underTest.walkAllDogs();
+		assertThat(dog1.getHappinessLevel(),is(20));
+		assertThat(dog2.getHappinessLevel(),is(60));
 	}
 }
