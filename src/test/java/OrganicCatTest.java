@@ -73,7 +73,7 @@ public class OrganicCatTest {
 		
 		underTest.add(cat2);
 		underTest.playWithPet(cat2.getPetName(),5);
-		assertThat(cat2.getHappinessLevel(),is(85));
+		assertThat(cat2.getHappinessLevel(),is(75));
 	}
 	
 	@Test

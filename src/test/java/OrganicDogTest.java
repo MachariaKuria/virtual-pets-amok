@@ -27,13 +27,13 @@ public class OrganicDogTest {
 		String description = dog1.getPetDescription();
 		int hungerLevel = dog1.getHungerLevel();
 		int thirstLevel =dog1.getThirstLevel();
-		int boredomLevel = dog2.getHappinessLevel();
+		int happinessLevel = dog2.getHappinessLevel();
 		int wellnessLevel = dog1.getHealthLevel();
 		assertThat(name ,is("Tommy"));
 		assertThat(description ,is("Brown"));
 		assertThat(hungerLevel ,is(10));
 		assertThat(thirstLevel ,is(20));
-		assertThat(boredomLevel ,is(70));
+		assertThat(happinessLevel ,is(70));
 		assertThat(wellnessLevel ,is(40));
 	}
 	
@@ -73,13 +73,13 @@ public class OrganicDogTest {
 		
 		underTest.add(dog2);
 		underTest.playWithPet(dog2.getPetName(),5);
-		assertThat(dog2.getHappinessLevel(),is(85));
+		assertThat(dog2.getHappinessLevel(),is(75));
 	}
 	@Test
-	public void shouldBeAbleToIncreaseHappinessLevelFrom28To42ByPlayingWithdog1(){
+	public void shouldBeAbleToIncreaseHappinessLevelFrom28To32ByPlayingWithdog1(){
 		underTest.add(dog1);
 		underTest.playWithPet(dog1.getPetName(),2);
-		assertThat(dog1.getHappinessLevel(),is(42));
+		assertThat(dog1.getHappinessLevel(),is(32));
 		
 	}
 	
@@ -87,29 +87,28 @@ public class OrganicDogTest {
 	public void shouldBeAbleToIncreaseHealthLevelFrom80To92ByCleaningCages(){
 		underTest.add(dog2);
 		underTest.cleanAllCages();
-		assertThat(dog2.getHealthLevel(),is(92));
+		assertThat(dog2.getHealthLevel(),is(122));
 		
 	}
 
 	@Test
-	public void shouldIncreaseHungerThirstBoredomWhileReduceHappinessWithOneTick() {
+	public void shouldIncreaseHungerThirstWhileReduceHappinessWithOneTick() {
 		underTest.tick();
 		dog1.increaseHunger();
 		dog1.increaseThirst();
-		dog1.increaseBoredom();
 		dog1.increaseWasteLevel();
 		assertThat(dog1.getHungerLevel(),is(42));
 		assertThat(dog1.getThirstLevel(),is(43));
-		assertThat(dog1.getHappinessLevel(),is(1));
+		assertThat(dog1.getHappinessLevel(),is(30));
 	}
 	
 	@Test
-	public void shouldBeAbleToReduceBoredomLevelByWalkingAllDogs() {
+	public void shouldBeAbleToIncreaseHappinessLevelByWalkingAllDogs() {
 		underTest.add(dog1);
 		underTest.add(dog2);
 		((IDog)dog1).walkDog();
 		((IDog)dog2).walkDog();
-		assertThat(dog1.getHappinessLevel(),is(47));
-		assertThat(dog2.getHappinessLevel(),is(87));
+		assertThat(dog1.getHappinessLevel(),is(77));
+		assertThat(dog2.getHappinessLevel(),is(117));
 	}
 }

@@ -53,8 +53,8 @@ public class RoboticDogTest {
 		underTest.add(dog1);
 		underTest.add(dog2);
 		underTest.oilAllPets();
-		assertThat(dog1.getRustLevel(), is(90));
-		assertThat(dog2.getRustLevel(), is(98));
+		assertThat(dog1.getRustLevel(), is(70));
+		assertThat(dog2.getRustLevel(), is(78));
 
 	}
 
@@ -64,7 +64,7 @@ public class RoboticDogTest {
 		underTest.add(dog2);
 		((IDog)dog1).walkDog();
 		((IDog)dog2).walkDog();
-		assertThat(dog1.getHappinessLevel(), is(115));
-		assertThat(dog2.getHappinessLevel(), is(165));
+		assertThat(dog1.getHappinessLevel(), is(151));
+		assertThat(dog2.getHappinessLevel(), is(201));
 	}
 }

@@ -40,8 +40,8 @@ public class RoboticCatTest {
 		underTest.add(cat1);
 		underTest.add(cat2);
 		underTest.oilAllPets();
-		assertThat(cat1.getRustLevel(),is(90));
-		assertThat(cat2.getRustLevel(),is(696));
+		assertThat(cat1.getRustLevel(),is(70));
+		assertThat(cat2.getRustLevel(),is(676));
 		
 	}
 	@Test
