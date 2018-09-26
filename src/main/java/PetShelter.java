@@ -134,37 +134,49 @@ public class PetShelter {
 		System.out.println("Press 1 To Adopt A Pet");
 		System.out.println("Press 2 To Play with a Pet");
 		System.out.println("Press 3 to Water the pets");
-		System.out.println("Press 5 to Walk all the dogs");
-		System.out.println("Press 3 to Empty shelter litter boxes");
-		System.out.println("Press 4 to Clean the dog cages");
-		System.out.println("Press 5 to Oil the Robotic pets");
+		System.out.println("Press 4 to Walk all the dogs");
+		System.out.println("Press 5 to Empty shelter litter boxes");
+		System.out.println("Press 6 to Clean the dog cages");
+		System.out.println("Press 7 to Oil the Robotic pets");
+		System.out.println("Press 8 to quit");
 
 	}
 
-	public void organicPetStatus() {
+	public void organicPets() {
 
-		System.out.println("Petshelter status as shown below:");
-		System.out.println();
-
-		for (Entry<String, VirtualPet> pet : pets.entrySet()) {
+		System.out.println("Name\t|Hunger\t|Thirst |Boredom|Happiness|Health");
+		System.out.println("-------\t|------\t|-------\t|--------\t");
+		for (VirtualPet pet : pets.values()) {
 			if(pet instanceof OrganicPet) {
-			System.out.print(pet.getKey() + "\t|");
-			System.out.println(((OrganicPet) pet.getValue()).getHungerLevel() + "\t|"
-					+ ((OrganicPet) pet.getValue()).getThirstLevel() + "\t|" + ((OrganicPet)pet.getValue()).getHappinessLevel()
-					+ "\t|" + ((OrganicPet)pet.getValue()).getHealthLevel());
-			}
-			else if(pet instanceof RoboticPet) {
-				System.out.print(pet.getKey() + "\t|");
-				System.out.println(((RoboticPet) pet.getValue()).getRustLevel() + "\t|"
-						+ pet.getValue().getHappinessLevel()
-						+ "\t|" + pet.getValue().getHealthLevel());				
+			System.out.print(pet.getPetName() + "\t|");
+			System.out.println(((OrganicPet) pet).getHungerLevel() + "\t|"
+					+ (((OrganicPet) pet).getThirstLevel() + "\t|" 
+					+ (((OrganicPet) pet).getBoredomLevel() + "\t|" 
+					+ pet.getHappinessLevel() + "\t|"
+					+ pet.getHealthLevel())));
 			}
 		}
 	}
 
 	public void roboticPets() {
-
+		System.out.println("Name\t|Rust\t|Happiness\t|Health");
+		System.out.println("-------\t|------\t|-------|--------");
+		for (VirtualPet pet : pets.values()) 
+		if(pet instanceof RoboticPet) {
+		System.out.print(pet.getPetName() + "\t|");
+		System.out.println(((RoboticPet) pet).getRustLevel() + "\t|"
+				+ pet.getHappinessLevel()
+				+ "\t\t|" + pet.getHealthLevel());
+		}
+	}
+	
+	public void petList() {
+		System.out.println("Organic Pets:");
+		organicPets();
+		System.out.println();
 		System.out.println("Robotic Pets:");
+		roboticPets();
+		
 	}
 
 }

@@ -15,8 +15,8 @@ public class OrganicCatTest {
 	@Before
 	public void shouldBeAnInstanceofOrganicCat() {
 		underTest = new PetShelter();
-		 cat1 = new OrganicCat("Panther","Black",10,20,45,30);
-		 cat2 = new OrganicCat("Chui", "Has dark spots", 50, 60,45,70);
+		 cat1 = new OrganicCat("Panther","Black",10,20,45,30,45);
+		 cat2 = new OrganicCat("Chui", "Has dark spots", 50, 60,45,70,90);
 		assertThat(cat1, instanceOf(OrganicPet.class));
 		assertThat(cat2, instanceOf(OrganicPet.class));
 	}	
@@ -27,13 +27,15 @@ public class OrganicCatTest {
 		int hungerLevel = cat1.getHungerLevel();
 		int thirstLevel =cat1.getThirstLevel();
 		int wasteLevel =cat1.getWasteLevel();
-		int healthLevel = cat2.getHappinessLevel();
+		int happinessLevel = cat2.getHappinessLevel();
+		int healthLevel = cat2.getHealthLevel();
 		assertThat(name ,is("Panther"));
 		assertThat(description ,is("Black"));
 		assertThat(hungerLevel ,is(10));
 		assertThat(thirstLevel ,is(20));
 		assertThat(wasteLevel ,is(45));
-		assertThat(healthLevel ,is(70));
+		assertThat(happinessLevel ,is(70));
+		assertThat(healthLevel ,is(90));
 	}
 	
 	@Test
