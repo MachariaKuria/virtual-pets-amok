@@ -13,14 +13,15 @@ public class OrganicDog extends OrganicPet implements IDog{
 
 
 	public void emptyCages() {
-		healthLevel += 12;
-		happinessLevel += 17;
+		healthLevel += 42;
+		happinessLevel += 48;
+		wasteLevel -=42;
 	}
 
 
 	public void walkDog() {
 		healthLevel += 32;
-		happinessLevel += 17;
+		happinessLevel += 47;
 	    
 		
 	}

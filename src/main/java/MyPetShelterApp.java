@@ -14,39 +14,40 @@ public class MyPetShelterApp {
 		String userChoice = null;
 
 		System.out.println("Thank you for volunteering at Masha's Pet Shelter!");
-		System.out.println();
-
-		System.out.println("What would you like to do next?");
+		System.out.println("Welcome to the Pet Shelter");
 		System.out.println();
 		myPets.menuList();
+		myPets.sortPets();
 		do {
 			try {
 				userChoice = input.nextLine();
 				if (userChoice.equals("1")) {
-					System.out.println("Would you like to adopt an organic or robotic pet?.");
+					System.out.println("Would you like to adopt a pet?.");
 					String userAns = input.nextLine();
 					while (!userAns.equalsIgnoreCase("n")) {
 						System.out.println("Okay, select a pet from the pet list below that you want to adopt.");
-						myPets.petList();
+						myPets.petNames();
 						String petToAdopt = input.nextLine();
 						if (myPets.findPet(petToAdopt.toLowerCase()) != null) {
 							myPets.adopt(myPets.findPet(petToAdopt.toLowerCase()));
-							myPets.organicPets();
+							System.out.println();
+							myPets.petNames();
 							myPets.tick();
 						} else {
 							System.out.println("That pet doesn't exist");
 						}
-						myPets.menuList();
-						System.out.println("What else did you want to do?");
+						System.out.println("Would you like to adopt another pet y/n?");
 						userAns = input.nextLine();
-						myPets.menuList();
 					}
+					myPets.menuList();
+					System.out.println();
+					System.out.println("What else did you want to do?");
+
 				} else if (userChoice.equals("2")) {
 					System.out.println("Would you like to play with one pet y/n?");
 					String userAns = input.nextLine();
 					while (!userAns.equalsIgnoreCase("n")) {
 						System.out.println("List of pets.");
-						System.out.println();
 						myPets.petList();
 						System.out.println();
 						System.out.println("Which pet would you like to play with?");
@@ -65,10 +66,11 @@ public class MyPetShelterApp {
 						System.out.println("Do you want to play with another pet y/n?");
 						userAns = input.nextLine();
 					}
-					System.out.println("What else did you want to do?");
-					System.out.println();
 					myPets.menuList();
+					System.out.println("What else did you want to do?");
+					userChoice = input.nextLine();
 					System.out.println();
+					myPets.tick();
 					
 				}else if(userChoice.equals("3")) {
 					myPets.waterAllLivePets();
@@ -76,6 +78,9 @@ public class MyPetShelterApp {
 					System.out.println();
 					System.out.println("What else did you want to do?");
 					System.out.println();
+					myPets.menuList();
+					System.out.println();
+					myPets.tick();
 					
 				}
 				else if(userChoice.equals("4")) {
@@ -84,6 +89,9 @@ public class MyPetShelterApp {
 					System.out.println();
 					System.out.println("What else did you want to do?");
 					System.out.println();
+					myPets.menuList();
+					System.out.println();	
+					myPets.tick();
 					
 				}
 				else if(userChoice.equals("5")) {
@@ -92,6 +100,9 @@ public class MyPetShelterApp {
 					System.out.println();
 					System.out.println("What else did you want to do?");
 					System.out.println();
+					myPets.menuList();
+					System.out.println();	
+					myPets.tick();
 					
 				}	
 				else if(userChoice.equals("6")) {
@@ -100,6 +111,9 @@ public class MyPetShelterApp {
 					System.out.println();
 					System.out.println("What else did you want to do?");
 					System.out.println();
+					myPets.menuList();
+					System.out.println();
+					myPets.tick();
 					
 				}					
 				else if(userChoice.equals("7")) {
@@ -108,13 +122,20 @@ public class MyPetShelterApp {
 					System.out.println();
 					System.out.println("What else did you want to do?");
 					System.out.println();
+					myPets.menuList();
+					System.out.println();
+					myPets.tick();
 					
 				}				
 			} catch (NullPointerException e) {
 				e.printStackTrace();
 			}
 
-		} while (!userChoice.equals("8"));
+		} while (!userChoice.equals("8"));		
+		System.out.println("Thanks for volunteering..GoodBye!");
+		System.exit(0);
+		input.close();
+		
 	}
 
 }

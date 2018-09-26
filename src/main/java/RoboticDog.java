@@ -11,8 +11,8 @@ public class RoboticDog extends RoboticPet implements IDog {
 
 
 	public void walkDog() {
-		happinessLevel += 15;
-		healthLevel += 15;
+		happinessLevel += 51;
+		healthLevel += 32;
 
 	}
 }

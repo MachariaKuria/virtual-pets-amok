@@ -96,8 +96,9 @@ public class PetShelter {
 					((OrganicPet) pet).increaseThirst();
 				}
 				pet.increaseBoredom();
-				if (wasteLevel >= 10) {
-					((OrganicPet) pet).increaseWasteLevel();
+				if (wasteLevel >= 30) {
+					pet.decreaseHappinessLevel();
+					pet.decreaseHealthLevel();
 				}
 			}
 
@@ -130,7 +131,7 @@ public class PetShelter {
 
 	public void menuList() {
 
-		System.out.println("Welcome to the Pet Shelter");
+		
 		System.out.println("Press 1 To Adopt A Pet");
 		System.out.println("Press 2 To Play with a Pet");
 		System.out.println("Press 3 to Water the pets");
@@ -144,29 +145,28 @@ public class PetShelter {
 
 	public void organicPets() {
 
-		System.out.println("Name\t|Hunger\t|Thirst |Boredom|Happiness|Health");
-		System.out.println("-------\t|------\t|-------\t|--------\t");
+		System.out.println("Name\t|Hunger\t|Thirst\t|Happiness|Health");
+		System.out.println("----\t|----\t|----\t|---------|----");
 		for (VirtualPet pet : pets.values()) {
 			if(pet instanceof OrganicPet) {
 			System.out.print(pet.getPetName() + "\t|");
 			System.out.println(((OrganicPet) pet).getHungerLevel() + "\t|"
 					+ (((OrganicPet) pet).getThirstLevel() + "\t|" 
-					+ (((OrganicPet) pet).getBoredomLevel() + "\t|" 
-					+ pet.getHappinessLevel() + "\t|"
-					+ pet.getHealthLevel())));
+					+ pet.getHappinessLevel() + "\t  |"
+					+ pet.getHealthLevel()));
 			}
 		}
 	}
 
 	public void roboticPets() {
-		System.out.println("Name\t|Rust\t|Happiness\t|Health");
-		System.out.println("-------\t|------\t|-------|--------");
+		System.out.println("Name\t|Rust\t|Happiness|Health");
+		System.out.println("-------\t|-----\t|---------|---");
 		for (VirtualPet pet : pets.values()) 
 		if(pet instanceof RoboticPet) {
 		System.out.print(pet.getPetName() + "\t|");
 		System.out.println(((RoboticPet) pet).getRustLevel() + "\t|"
-				+ pet.getHappinessLevel()
-				+ "\t\t|" + pet.getHealthLevel());
+				+ pet.getHappinessLevel()+ "\t  |" 
+				+ pet.getHealthLevel());
 		}
 	}
 	
@@ -179,4 +179,18 @@ public class PetShelter {
 		
 	}
 
+	public void petNames() {
+		System.out.println("Name\t|Pet Description");
+		System.out.println("-------\t|---------------\t");
+		for (VirtualPet pet : pets.values()) {
+			if(pet instanceof OrganicPet) {
+			System.out.print(pet.getPetName() + "\t|");
+			System.out.println(pet.getPetDescription() );
+			}else if(pet instanceof RoboticPet) {
+				System.out.print(pet.getPetName() + "\t|");
+				System.out.println(pet.getPetDescription() );
+				}
+		}
+		
+	}
 }

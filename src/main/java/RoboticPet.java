@@ -9,7 +9,9 @@ public class RoboticPet extends VirtualPet {
 
 	public void oilPets() {
 		
-		rustLevel -= 12;
+		rustLevel -= 32;
+		happinessLevel += 25;
+		healthLevel +=44;
 		
 	}
 

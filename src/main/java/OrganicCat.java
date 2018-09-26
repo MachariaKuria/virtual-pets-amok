@@ -15,6 +15,7 @@ public class OrganicCat extends OrganicPet implements ICat {
 	public void cleanLitterBoxes() {
 		wasteLevel -=21;
 		happinessLevel +=19;
+		healthLevel +=23;
 	}
 
 }

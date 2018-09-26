@@ -27,13 +27,22 @@ public abstract class VirtualPet {
 
 	public void petPlay(int play) {
 		happinessLevel += play;
-		happinessLevel +=10;
+		healthLevel +=69;
+
 	}
 
 	public void increaseBoredom() {
-		happinessLevel -=14;
+		happinessLevel -=24;
 		
 	}
 
+	public void decreaseHappinessLevel() {
+		
+		happinessLevel -=29;
+	}	
+	public void decreaseHealthLevel() {
 	
+		healthLevel -=23;
+
+	}
 }
