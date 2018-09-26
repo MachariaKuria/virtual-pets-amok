@@ -1,5 +1,5 @@
 
-public class OrganicCat extends OrganicPet{
+public class OrganicCat extends OrganicPet implements ICat {
 
 
 	public OrganicCat(String petName, String petDescription, int hungerLevel, int thirstLevel,int wasteLevel, int happinessLevel) {

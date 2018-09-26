@@ -9,7 +9,7 @@ public class RoboticDog extends RoboticPet implements IDog {
 		this.happinessLevel = happinessLevel;
 	}
 
-	@Override
+
 	public void walkDog() {
 		happinessLevel += 15;
 		healthLevel += 15;

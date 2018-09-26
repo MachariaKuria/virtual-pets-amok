@@ -1,7 +1,10 @@
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class PetShelter {
 
@@ -11,7 +14,6 @@ public class PetShelter {
 
 		return pets.get(petName);
 	}
-
 
 	public void add(VirtualPet pet) {
 		pets.put(pet.getPetName(), pet);
@@ -29,8 +31,8 @@ public class PetShelter {
 
 	public void emptyLitterBoxes() {
 		for (VirtualPet pet : pets.values()) {
-			if (pet instanceof OrganicCat) {
-				((OrganicCat) pet).cleanLitterBoxes();
+			if (pet instanceof ICat) {
+				((ICat) pet).cleanLitterBoxes();
 			}
 		}
 
@@ -74,6 +76,16 @@ public class PetShelter {
 		return roboPet;
 	}
 
+	public Collection<VirtualPet> getAllOrganicPets() {
+		Collection<VirtualPet> livePet = new ArrayList<>();
+		for (VirtualPet pet : pets.values()) {
+			if (pet instanceof OrganicPet) {
+				livePet.add(pet);
+			}
+		}
+		return livePet;
+	}
+
 	public void tick() {
 		int wasteLevel = 0;
 		if ((int) (Math.random() * 10) + 1 < 5) {
@@ -110,5 +122,49 @@ public class PetShelter {
 		}
 	}
 
+	public List<VirtualPet> sortPets() {
+		List<VirtualPet> toSort = new ArrayList<>(pets.values());
+		Collections.sort(toSort, (pet1, pet2) -> pet1.getPetName().compareTo(pet2.getPetName()));
+		return toSort;
+	}
+
+	public void menuList() {
+
+		System.out.println("Welcome to the Pet Shelter");
+		System.out.println("Press 1 To Adopt A Pet");
+		System.out.println("Press 2 To Play with a Pet");
+		System.out.println("Press 3 to Water the pets");
+		System.out.println("Press 5 to Walk all the dogs");
+		System.out.println("Press 3 to Empty shelter litter boxes");
+		System.out.println("Press 4 to Clean the dog cages");
+		System.out.println("Press 5 to Oil the Robotic pets");
+
+	}
+
+	public void organicPetStatus() {
+
+		System.out.println("Petshelter status as shown below:");
+		System.out.println();
+
+		for (Entry<String, VirtualPet> pet : pets.entrySet()) {
+			if(pet instanceof OrganicPet) {
+			System.out.print(pet.getKey() + "\t|");
+			System.out.println(((OrganicPet) pet.getValue()).getHungerLevel() + "\t|"
+					+ ((OrganicPet) pet.getValue()).getThirstLevel() + "\t|" + ((OrganicPet)pet.getValue()).getHappinessLevel()
+					+ "\t|" + ((OrganicPet)pet.getValue()).getHealthLevel());
+			}
+			else if(pet instanceof RoboticPet) {
+				System.out.print(pet.getKey() + "\t|");
+				System.out.println(((RoboticPet) pet.getValue()).getRustLevel() + "\t|"
+						+ pet.getValue().getHappinessLevel()
+						+ "\t|" + pet.getValue().getHealthLevel());				
+			}
+		}
+	}
+
+	public void roboticPets() {
+
+		System.out.println("Robotic Pets:");
+	}
 
 }
